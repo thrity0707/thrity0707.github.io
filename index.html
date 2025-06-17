@@ -105,6 +105,12 @@
         </div>
         <div id="box">
             <input type = file id = input>
+            <div style="margin: 10px 0;">
+                <select id="romSelect" onchange="loadPresetRom()">
+                    <option value="">选择预设游戏</option>
+                    <option value="Pokemon - Gold Version (USA, Europe).gbc">Pokemon Gold (GBC)</option>
+                </select>
+            </div>
             Drag ROM file or click here
         </div>
 
@@ -264,6 +270,14 @@
             
             box.ondragover = () => box.setAttribute("drag", true);
             box.ondragleave = () => box.removeAttribute("drag");
+
+            function loadPresetRom() {
+                const select = document.getElementById('romSelect');
+                const selectedRom = select.value;
+                if (selectedRom) {
+                    run(false, selectedRom);
+                }
+            }
         </script>
     </body>
 </html>
